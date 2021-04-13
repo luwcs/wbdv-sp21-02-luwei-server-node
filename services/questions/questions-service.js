@@ -10,6 +10,12 @@ const findQuestionsForQuiz = (qzid) => {
   })
 };
 
+// const findQuestionsForQuiz = async function(qzid) {
+//   return questions.filter((question) => {
+//     return question.quizId === qzid;
+//   })
+// };
+
 const findQuestionById = (questionId) => {
   return questions.find((question) => {
     return question._id === questionId;
@@ -18,11 +24,13 @@ const findQuestionById = (questionId) => {
 
 // TODO: MongoDB Assignment next week
 const createQuestion = () => {};
+const createQuestionForQuiz = () => {};
 const updateQuestion = () => {};
 const deleteQuestion = () => {};
 
 module.exports = {
-  createQuestion, findQuestionsForQuiz,
+  createQuestion, createQuestionForQuiz,
+  findQuestionsForQuiz,
   findAllQuestions, findQuestionById,
   updateQuestion, deleteQuestion
 };
