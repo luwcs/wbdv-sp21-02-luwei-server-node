@@ -1,5 +1,18 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
+require('dotenv').config()
+
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+const mongoose = require('mongoose')
+
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/wbdv-sp21-02'
+
+mongoose.connect(
+    dbUrl,
+    {useNewUrlParser: true, useUnifiedTopology: true});
 
 // configure CORS
 app.use(function (req, res, next) {
@@ -13,5 +26,6 @@ app.use(function (req, res, next) {
 
 require("./controllers/quizzes-controller")(app);
 require("./controllers/questions-controller")(app);
+require('./controllers/quiz-attempts-controller')(app);
 
 app.listen(4000);

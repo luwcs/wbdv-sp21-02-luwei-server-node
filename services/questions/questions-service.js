@@ -1,20 +1,13 @@
 const questions = require('./questions.json')
+const questionsModel = require("../../models/questions/questions-model")
 
 const findAllQuestions = () => {
-  return questions;
+  return questionsModel.find();
 };
 
 const findQuestionsForQuiz = (qzid) => {
-  return questions.filter((question) => {
-    return question.quizId === qzid;
-  })
+  return questionsModel.find({quizId: qzid})
 };
-
-// const findQuestionsForQuiz = async function(qzid) {
-//   return questions.filter((question) => {
-//     return question.quizId === qzid;
-//   })
-// };
 
 const findQuestionById = (questionId) => {
   return questions.find((question) => {
