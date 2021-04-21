@@ -28,4 +28,7 @@ require("./controllers/quizzes-controller")(app);
 require("./controllers/questions-controller")(app);
 require('./controllers/quiz-attempts-controller')(app);
 
-app.listen(4000);
+const port = process.env.PORT || 4000
+app.listen(port, () => {
+  console.log(`Serving on port ${port}`)
+});
